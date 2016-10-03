@@ -1,0 +1,19 @@
+# userinldap, People, mnt.lab
+dn: uid=vcharches,ou=People,dc=mnt,dc=lab
+uid: vcharches
+homeDirectory: /home/vcharches
+loginShell: /bin/bash
+mail: vcharches@epam.com
+uidNumber: 10500
+gidNumber: 10500
+gecos: User In LDAP
+cn: User In LDAP
+givenName: Vlad_Charches
+sn: InLDAP
+objectClass: top
+objectClass: posixAccount
+objectClass: shadowAccount
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+userPassword: 888888
