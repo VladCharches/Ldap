@@ -5,9 +5,9 @@ MTN.*NIX.11 LDAP
 
 # LDAP TASK 2
 
-1. I need to configure audit logging
+**1. I need to configure audit logging**
 
-First of all created folder /var/log/ldap
+First of all I created folder /var/log/ldap
 With parameteres:
  
  chmod 744 ldap
@@ -24,7 +24,7 @@ auditlog /var/log/ldap/audit.log
 
 ###
 
-2. Added password policy and memberof
+**2. Added password policy and memberof**
 
 
 moduleload memberof.la
@@ -49,7 +49,7 @@ Create policy: my file - [password_policy.ldif](ldif_files/password_policy.ldif)
 
 ldapadd -x -D "cn=admin,dc=mnt,dc=lab" -W -f /etc/openldap/password_policy.ldif
 
-3. I added Org.unit services [services.ldif](ldif_files/services.ldif) after
+**3. I added Org.unit services [services.ldif](ldif_files/services.ldif) after it I**
 
 Created groups Linux and Zabbix and 
 
@@ -63,7 +63,13 @@ Added users into these groups.
 
 [ucharches.ldif](ldif_files/ucharches.ldif)
 
-4. In Zabbix server:
+Testing memberof  cn_zabbix
+
+ldapsearch -h localhost -D "cn=admin,dc=mnt,dc=lab" -W -b "dc=mnt,dc=lab" 'memberOf=cn=Zabbix,ou=Services,dc=mnt,dc=lab'
+
+![11](screens/11.png)
+
+**4. In Zabbix server:**
 
 yum install -y php-ldap
 
@@ -82,8 +88,7 @@ Go to Administration - Authentication - LDAP
 
 And connect to ldap. Example in screens.
 
-5. Installation of ldap-client
-
+**5. Installation of ldap-client**
 
 yum install -y openldap-clients nss-pam-ldapd pam_ldap nscd rpcbind authconfig
 
@@ -97,13 +102,11 @@ nano  /etc/nslcd.conf
 
 filter passwd (&(objectClass=posixAccount)(memberOf=cn=Linux,ou=Groups,dc=mnt,dc=lab))
 
-service nslcd restart
+- service nslcd restart
 
 and Checked:  
 
 ![10](screens/10.png)
-
-
 
 
 
