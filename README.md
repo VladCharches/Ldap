@@ -49,7 +49,7 @@ Create policy: my file - [password_policy.ldif](ldif_files/password_policy.ldif)
 
 ldapadd -x -D "cn=admin,dc=mnt,dc=lab" -W -f /etc/openldap/password_policy.ldif
 
-**3. I added Org.unit services [services.ldif](ldif_files/services.ldif) after it I **
+**3. I added Org.unit services [services.ldif](ldif_files/services.ldif) after it I**
 
 Created groups Linux and Zabbix and 
 
@@ -62,6 +62,12 @@ Added users into these groups.
 [userX.ldif](ldif_files/userX.ldif)
 
 [ucharches.ldif](ldif_files/ucharches.ldif)
+
+Testing memberof  cn_zabbix
+
+ldapsearch -h localhost -D "cn=admin,dc=mnt,dc=lab" -W -b "dc=mnt,dc=lab" 'memberOf=cn=Zabbix,ou=Services,dc=mnt,dc=lab'
+
+![11](screens/11.png)
 
 **4. In Zabbix server:**
 
