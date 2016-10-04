@@ -1,0 +1,7 @@
+# wheel, Groups, mnt.lab
+dn: cn=wheel,ou=Groups,dc=mnt,dc=lab
+cn: wheel
+gidNumber: 10
+objectClass: posixGroup
+objectClass: top
+memberUid: test8
